@@ -32,6 +32,8 @@ public class CameraController : MonoBehaviour
 
     public void OnTransitionComplete() 
     {
-        transition = true;
+        //transition = true;
+        transform.position = new Vector3(0f, 15f, 0f);
+        transform.rotation = Quaternion.Euler(90f, 0f, 0f);
     }
 }
