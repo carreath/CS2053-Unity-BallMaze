@@ -5,7 +5,7 @@ using UnityEngine;
 public class WallBouncyController : MapObject
 {
      
-    
+    public Position transform;
     public void setupWall(int xGrid1, int zGrid1, int xGrid2, int zGrid2) {
         float xScale = (xGrid2 - xGrid1) / 2f;
         if (xGrid1 == xGrid2) {
