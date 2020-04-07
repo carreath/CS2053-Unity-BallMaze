@@ -42,6 +42,7 @@ public class GameController : MonoBehaviour
         transitionScript = _transitionController.GetComponent<TransitionController>();
         transitionScript.ball = ball;
         transitionScript.dialogue = dialogueScript;
+        transitionScript.cameraSettings = level.cameraSettings;
 
 
         loading = true;

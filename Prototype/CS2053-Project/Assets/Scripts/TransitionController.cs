@@ -24,6 +24,8 @@ public class TransitionController : MonoBehaviour
     public CameraController camera;
     public DialogueController dialogue;
 
+    public CameraSettings cameraSettings;
+
     private float timer;
     private float ballX;
     private float ballZ;
@@ -52,7 +54,7 @@ public class TransitionController : MonoBehaviour
             switch (transitionType) {
                 case TransitionType.IntroSetup:
                     checkError = true;
-                    ballPosition.y = 25f;
+                    ballPosition.y = cameraSettings.position.y + 10f;
                     ball.transform.position = ballPosition;
 
                     cameraPosition = ballPosition;
@@ -61,7 +63,7 @@ public class TransitionController : MonoBehaviour
 
                     transitionType = TransitionType.IntroDialogue;
 
-                    camera.GetComponent<Camera>().farClipPlane = 23;
+                    camera.GetComponent<Camera>().farClipPlane = cameraSettings.position.y + 7;
 
                     break;
                 case TransitionType.IntroDialogue:
@@ -74,20 +76,17 @@ public class TransitionController : MonoBehaviour
                     }
                     break;
                 case TransitionType.Intro:
-                    if (camera.transform.position.y > 15.1f && camera.transform.position.y < 20f) {
+                    if ((camera.transform.position - cameraSettings.position).magnitude < 0.1f) {
+                        isTransitioning = false;
+                    } else if (camera.transform.position.y < cameraSettings.position.y + 5f) {
                         camera.GetComponent<Camera>().farClipPlane  = 1000;
                         cameraPosition = camera.transform.position;
-                        newCameraPosition = cameraPosition;
-                        newCameraPosition.x = 0f;
-                        newCameraPosition.y = 14f;
-                        newCameraPosition.z = -10f;
-                        camera.transform.position = Vector3.Lerp(cameraPosition, newCameraPosition, 2f * Time.deltaTime);
+                        newCameraPosition = cameraSettings.position;
+                        camera.transform.position = Vector3.Lerp(cameraPosition, newCameraPosition, cameraSettings.introSpeed * Time.deltaTime);
                         
-                        if (camera.transform.rotation.eulerAngles.x > 60) {
-                            camera.transform.rotation = Quaternion.Lerp(camera.transform.rotation, Quaternion.Euler(60f, 0f, 0f), 2f * Time.deltaTime);
+                        if (camera.transform.rotation.eulerAngles.x > cameraSettings.rotation.x) {
+                            camera.transform.rotation = Quaternion.Lerp(camera.transform.rotation, Quaternion.Euler(cameraSettings.rotation), cameraSettings.introSpeed * Time.deltaTime);
                         }
-                    } else if (camera.transform.position.y <= 15.1f) {
-                        isTransitioning = false;
                     } else {
                         cameraPosition = ball.transform.position;
                         cameraPosition.y += 3f;
@@ -113,19 +112,19 @@ public class TransitionController : MonoBehaviour
                     if (Mathf.Abs(cameraPosition.x - ball.ballX) > 0.15 || Mathf.Abs(cameraPosition.z - ball.ballZ) > 0.15) {
                         newCameraPosition = ball.transform.position;
                         newCameraPosition.y = 5f;
-                        camera.transform.position = Vector3.Lerp(cameraPosition, newCameraPosition, 2.5f * Time.deltaTime);
+                        camera.transform.position = Vector3.Lerp(cameraPosition, newCameraPosition, cameraSettings.outroSpeed * Time.deltaTime);
 
                         
                     } else if (cameraPosition.y - ball.transform.position.y > 3.05f) {
                         newCameraPosition = ball.transform.position;
                         newCameraPosition.y += 3f;
-                        camera.transform.position = Vector3.Lerp(cameraPosition, newCameraPosition, 2f * Time.deltaTime);
+                        camera.transform.position = Vector3.Lerp(cameraPosition, newCameraPosition, cameraSettings.outroSpeed * Time.deltaTime);
                     } else {
                         transitionType = TransitionType.OutroDialogue; 
                     }
 
                     if (camera.transform.rotation.eulerAngles.x < 89.9f) {
-                        camera.transform.rotation = Quaternion.Lerp(camera.transform.rotation, Quaternion.Euler(90f, 0f, 0f), 2f * Time.deltaTime);
+                        camera.transform.rotation = Quaternion.Lerp(camera.transform.rotation, Quaternion.Euler(90f, 0f, 0f), cameraSettings.outroSpeed * Time.deltaTime);
                     } else {
                         camera.transform.rotation = Quaternion.Euler(90f, 0, 0);
                     }

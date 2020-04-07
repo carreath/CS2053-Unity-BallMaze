@@ -23,6 +23,8 @@ public class Level1 : Map
         width = 30;
         height = 30;
 
+        cameraSettings = new CameraSettings(new Vector3(0f, 15f, -10f), new Vector3(60f, 0f, 0f), 2.5f, 2.5f);
+
         player = new Player(1, 1);
         walls = new Wall[] {
             // new Wall(x1, z1, x2, z2)

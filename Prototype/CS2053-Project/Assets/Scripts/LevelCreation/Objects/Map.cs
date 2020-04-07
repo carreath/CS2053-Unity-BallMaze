@@ -23,6 +23,8 @@ public abstract class Map : Level
     public float xOffset {get; set;}
     public float zOffset {get; set;}
 
+    public CameraSettings cameraSettings { get; set; }
+
     public void buildMap() {
         // IF YOUR OBJECT IS NOT A SUB-SET OF ANY OTHER TYPE ADD OFFSET RULES HERE
         xOffset = (float) -width/4f + 0.5f;

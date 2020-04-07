@@ -19,4 +19,6 @@ public interface Level
 
     float xOffset {get; set;}
     float zOffset {get; set;}
+
+    CameraSettings cameraSettings { get; set; }
 }
