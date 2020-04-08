@@ -68,10 +68,11 @@ public class TransitionController : MonoBehaviour
 
                     break;
                 case TransitionType.IntroDialogue:
-                    if (!dialogue.dialogueStarted) {
+                    if (!dialogue.noDialogue && !dialogue.dialogueStarted) {
                         dialogue.startIntroDialogue();
-                    } else if (dialogue.isComplete) {
+                    } else if (dialogue.noDialogue || dialogue.isComplete) {
                         transitionType = TransitionType.Intro;
+                        dialogue.noDialogue = false;
                     } else {
                         freezeBall();
                     }
@@ -119,8 +120,14 @@ public class TransitionController : MonoBehaviour
                     } else if (cameraPosition.y - ball.transform.position.y > 3.05f) {
                         newCameraPosition = ball.transform.position;
                         newCameraPosition.y += 3f;
+                        Debug.Log(camera.transform.position);
+                        Debug.Log(cameraPosition);
+                        Debug.Log(newCameraPosition);
+                        Debug.Log(cameraSettings.outroSpeed * Time.deltaTime);
+                        Debug.Log(camera.transform.position = Vector3.Lerp(cameraPosition, newCameraPosition, cameraSettings.outroSpeed * Time.deltaTime));
                         camera.transform.position = Vector3.Lerp(cameraPosition, newCameraPosition, cameraSettings.outroSpeed * Time.deltaTime);
                     } else {
+                        Debug.Log("FF");
                         transitionType = TransitionType.OutroDialogue; 
                     }
 

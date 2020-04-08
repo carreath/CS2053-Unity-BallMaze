@@ -24,6 +24,7 @@ public class DialogueController : MonoBehaviour
     public int rubikVariant;
     public bool dialogueStarted;
     public bool isComplete;
+    public bool noDialogue;
 
     private ActiveDialogue activeDialogue;
     private int dialogueIndex;
@@ -63,7 +64,8 @@ public class DialogueController : MonoBehaviour
 
     // Start is called before the first frame update
     void Update()
-    {   if (dialogueStarted && !isComplete) {
+    {   
+        if (dialogueStarted && !isComplete) {
             if(Input.GetKeyDown(KeyCode.Return))
             {
                 dialogueIndex++;
@@ -117,30 +119,42 @@ public class DialogueController : MonoBehaviour
     }
 
     public void startIntroDialogue() {
-        animator.SetBool("isOpen", true);
-        activeDialogue = ActiveDialogue.Intro;
-        dialogueIndex = 0;
-        dialogueStarted = true;
-        isComplete = false;
-        showNextSentence();
+        if (dialogue[0].Length == 0) {
+            noDialogue = true;
+        } else {
+            animator.SetBool("isOpen", true);
+            activeDialogue = ActiveDialogue.Intro;
+            dialogueIndex = 0;
+            dialogueStarted = true;
+            isComplete = false;
+            showNextSentence();
+        }
     }
     
     public void startOutroDialogue() {
-        animator.SetBool("isOpen", true);
-        activeDialogue = ActiveDialogue.Outro;
-        dialogueIndex = 0;
-        dialogueStarted = true;
-        isComplete = false;
-        showNextSentence();
+        if (dialogue[1].Length == 0) {
+            noDialogue = true;
+        } else {
+            animator.SetBool("isOpen", true);
+            activeDialogue = ActiveDialogue.Outro;
+            dialogueIndex = 0;
+            dialogueStarted = true;
+            isComplete = false;
+            showNextSentence();
+        }
     }
 
     public void startFailDialogue() {
-        animator.SetBool("isOpen", true);
-        activeDialogue = ActiveDialogue.Fail;
-        dialogueIndex = 0;
-        dialogueStarted = true;
-        isComplete = false;
-        showNextSentence();
+        if (dialogue[2].Length == 0) {
+            noDialogue = true;
+        } else {
+            animator.SetBool("isOpen", true);
+            activeDialogue = ActiveDialogue.Fail;
+            dialogueIndex = 0;
+            dialogueStarted = true;
+            isComplete = false;
+            showNextSentence();
+        }
     }
 
     public void setSanityText(int sanity) {
