@@ -37,6 +37,7 @@ public class GameController : MonoBehaviour
         _dialogueController = Instantiate(dialogueController, new Vector3(0,0,0), Quaternion.identity);
         dialogueScript = _dialogueController.GetComponent<DialogueController>();
         dialogueScript.dialogue = new Dialogue[][] {level.introDialogue, level.outroDialogue, level.failDialogue};
+        dialogueScript.rubikVariant = 1;
 
         _transitionController = Instantiate(transitionController, new Vector3(0,0,0), Quaternion.identity);
         transitionScript = _transitionController.GetComponent<TransitionController>();
