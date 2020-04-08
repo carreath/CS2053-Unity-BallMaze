@@ -120,14 +120,8 @@ public class TransitionController : MonoBehaviour
                     } else if (cameraPosition.y - ball.transform.position.y > 3.05f) {
                         newCameraPosition = ball.transform.position;
                         newCameraPosition.y += 3f;
-                        Debug.Log(camera.transform.position);
-                        Debug.Log(cameraPosition);
-                        Debug.Log(newCameraPosition);
-                        Debug.Log(cameraSettings.outroSpeed * Time.deltaTime);
-                        Debug.Log(camera.transform.position = Vector3.Lerp(cameraPosition, newCameraPosition, cameraSettings.outroSpeed * Time.deltaTime));
                         camera.transform.position = Vector3.Lerp(cameraPosition, newCameraPosition, cameraSettings.outroSpeed * Time.deltaTime);
                     } else {
-                        Debug.Log("FF");
                         transitionType = TransitionType.OutroDialogue; 
                     }
 
@@ -160,7 +154,7 @@ public class TransitionController : MonoBehaviour
                             dialogue.setSanityText(BallController.sanity);
                             SceneManager.LoadScene(0);
                         } else {
-                            SceneManager.LoadScene(0);
+                            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                         }
                     }
                     break;
