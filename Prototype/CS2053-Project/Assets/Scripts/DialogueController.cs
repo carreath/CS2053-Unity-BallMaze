@@ -21,11 +21,15 @@ public class DialogueController : MonoBehaviour
     }
 
     public Dialogue[][] dialogue;
+    public int rubikVariant;
     public bool dialogueStarted;
     public bool isComplete;
 
     private ActiveDialogue activeDialogue;
     private int dialogueIndex;
+
+    private GameObject rubik;
+    private GameObject king;
 
     void Start() {
         _canvas = Instantiate(canvas, new Vector3(0,0,0), Quaternion.identity);
@@ -33,6 +37,28 @@ public class DialogueController : MonoBehaviour
         nameText = _canvas.transform.GetComponentsInChildren<Text>()[0];
         dialogueText = _canvas.transform.GetComponentsInChildren<Text>()[1];
         sanityText = _canvas.transform.GetComponentsInChildren<Text>()[3];
+
+        foreach(Transform child in _canvas.transform) {
+            if (child.name == "DialoguePanel") {
+                foreach(Transform child2 in child) {
+                    if (child2.name == "Rubik") {
+                        rubik = child2.gameObject;
+                    } else if (child2.name == "CubeKing") {
+                        king = child2.gameObject;
+                    }
+                }
+            }
+        }
+
+        Transform rubikContainer = rubik.transform.GetChild(0).GetChild(0).GetChild(0);
+        foreach (Transform child in rubikContainer) {
+            if (child.name != "RubiK-" + rubikVariant) {
+                child.gameObject.SetActive(false);
+            }
+        }
+
+        rubik.SetActive(false);
+        king.SetActive(false);
     }
 
     // Start is called before the first frame update
@@ -50,15 +76,19 @@ public class DialogueController : MonoBehaviour
     }
 
     public void showNextSentence() {
+        rubik.SetActive(false);
+        king.SetActive(false);
         if (dialogueIndex >= dialogue[(int)activeDialogue].Length) {
             isComplete = true;
         } else {
             switch (dialogue[(int)activeDialogue][dialogueIndex].speaker) {
                 case Dialogue.Speaker.King:
                     nameText.text = "Cube King";
+                    king.SetActive(true);
                     break;
                 case Dialogue.Speaker.Rubik:
                     nameText.text = "Rubik";
+                    rubik.SetActive(true);
                     break;
                 case Dialogue.Speaker.Player:
                     nameText.text = "You";
@@ -67,6 +97,10 @@ public class DialogueController : MonoBehaviour
             StopAllCoroutines();
             StartCoroutine(TypeSentence(dialogue[(int)activeDialogue][dialogueIndex].text, dialogue[(int)activeDialogue][dialogueIndex].speed));
         }
+    }
+
+    public void setCamera(Camera camera) {
+        _canvas.worldCamera = camera;
     }
 
     IEnumerator TypeSentence(string sentence, int speed) {

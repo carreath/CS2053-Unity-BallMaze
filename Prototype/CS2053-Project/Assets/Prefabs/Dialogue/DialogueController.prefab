@@ -46,5 +46,7 @@ MonoBehaviour:
   animator: {fileID: -4979232441876203732, guid: 1a36b653c991dd547a521711efc23c6c,
     type: 3}
   canvas: {fileID: 262508787455567681, guid: 47359bad584c1604787aed7f7ded49f8, type: 3}
+  RubikModel: {fileID: 590997516122367434, guid: ec12a7cfcd8b6224d8fddbadfd81bd64,
+    type: 3}
   dialogueStarted: 0
   isComplete: 0

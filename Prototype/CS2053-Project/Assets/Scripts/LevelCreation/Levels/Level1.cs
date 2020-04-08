@@ -66,7 +66,7 @@ public class Level1 : Map
             new Dialogue(5, Dialogue.Speaker.King, "Try as much as you like. You will never win!"),
             new Dialogue(5, Dialogue.Speaker.Rubik, "Yes! You Will Never Outsmart Me!!"),
             new Dialogue(5, Dialogue.Speaker.King, "*Aghem*"),
-            new Dialogue(5, Dialogue.Speaker.King, "U-Us! You Will Never Outsmart US!")
+            new Dialogue(5, Dialogue.Speaker.Rubik, "U-Us! You Will Never Outsmart US!")
         };
     
         buildMap();

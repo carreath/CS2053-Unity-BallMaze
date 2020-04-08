@@ -42,6 +42,7 @@ public class TransitionController : MonoBehaviour
         isTransitioning = false;
         lost = false;
         checkError = false;
+        dialogue.setCamera(_mainCamera.GetComponent<Camera>());
     }
 
     // Update is called once per frame
