@@ -19,8 +19,7 @@ public class LevelLoader
     private GameObject Goal;
     private GameObject BlackHole;
     private GameObject Hole;
-    private GameObject WallPrefab;
-    private GameObject BouncyWall;
+    private GameObject Wall;
     private GameObject Ground;
 
     private GameObject Instantiate(GameObject obj, Vector3 position, Quaternion rot) {
@@ -48,13 +47,10 @@ public class LevelLoader
                     Hole = prefab;
                     break;
                 case "Wall":
-                    WallPrefab = prefab;
+                    Wall = prefab;
                     break;
                 case "Ground Segment":
                     Ground = prefab;
-                    break;
-                case "<BOUNCY WALL PREFAB NAME>":
-                    BouncyWall = prefab;
                     break;
             }
         }
@@ -125,15 +121,7 @@ public class LevelLoader
     }
 
     private void createWall(Wall wall) {
-        GameObject w = null;
-        switch (wall.type) {
-            case Wall.WallType.Default:
-                w = Instantiate(WallPrefab, wall.transform.position, Quaternion.identity);
-                break;
-            case Wall.WallType.Bouncy:
-                w = Instantiate(BouncyWall, wall.transform.position, Quaternion.identity);
-                break;
-        }
+        GameObject w = Instantiate(Wall, wall.transform.position, Quaternion.identity);
         w.transform.SetParent(gc.gameObject.transform);
         w.transform.localScale = wall.transform.scale;
     }
