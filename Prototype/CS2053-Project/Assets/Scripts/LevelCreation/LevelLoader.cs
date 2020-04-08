@@ -21,6 +21,7 @@ public class LevelLoader
     private GameObject Hole;
     private GameObject Wall;
     private GameObject Ground;
+    private GameObject ControlsDisplayObj;
 
     private GameObject Instantiate(GameObject obj, Vector3 position, Quaternion rot) {
         return gc.Instantiate_helper(obj, position, rot);
@@ -52,6 +53,9 @@ public class LevelLoader
                 case "Ground Segment":
                     Ground = prefab;
                     break;
+                case "ControlsDisplay":
+                    ControlsDisplayObj = prefab;
+                    break;
             }
         }
 
@@ -64,6 +68,14 @@ public class LevelLoader
             createPlayer();
         } catch (Exception e) {
             Debug.Log("Error Instantiating Player: " + e);
+        }
+
+        if (level.controls != null) {
+            try {
+                createControls();
+            } catch (Exception e) {
+                Debug.Log("Error Instantiating Controls: " + e);
+            }
         }
 
         // IF YOUR OBJECT IS AN OBSTACLE MAKE SURE IT IMPLEMENTS OBSTACLE << MyClass : Obstacle >>
@@ -106,6 +118,11 @@ public class LevelLoader
     private void createPlayer() {
         GameObject ballObj = Instantiate(Ball, level.player.transform.position, Quaternion.identity);
         ballObj.transform.SetParent(gc.gameObject.transform);
+    }
+
+    private void createControls() {
+        GameObject controlObj = Instantiate(ControlsDisplayObj, Vector3.zero, Quaternion.identity);
+        controlObj.transform.SetParent(gc.gameObject.transform);
     }
 
     // ADD A CASE FOR YOUR OBSTACLE HERE

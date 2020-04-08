@@ -8,6 +8,7 @@ public interface Level
     int height {get; set; }
     Vector3 mapScale {get; set;}
 
+    ControlsDisplay controls {get; set; }
     Player player {get; set; }
     Wall[] walls {get; set; }
     Goal[] goals {get; set; }
