@@ -19,31 +19,39 @@ public class Level1 : Map
             new Wall(0, 0, 28, 0),  // Bottom Wall
             new Wall(0, 0, 0, 31),  // Left Wall
             new Wall(27, 0, 28, 31),// Right Wall
-            new Wall(0, 30, 28, 31),// Top Wall
+            // new Wall(0, 30, 28, 31),// Top Wall
 
             new Wall(5, 0, 6, 10), // Internal Wall: start
             new Wall(0, 15, 12, 16),
             new Wall(12, 8, 13, 16),
 
             new Wall(18, 5, 19, 20),
-            new Wall(18, 9, 17, 15),
-            new Wall(18, 9, 17, 15),
+            new Wall(10, 20, 19, 21),
+            new Wall(0, 25, 23, 26),
+            
+            
+            
             
         };
 
 
         wallsBouncy = new WallBouncy[] {
+            new WallBouncy(0, 30, 27, 31),//top wall
             new WallBouncy(5, 5, 18, 6),
+            new WallBouncy(22, 5, 23, 26),
         }; 
 
         goals = new Goal[] {
-            new Goal(15, 15)
+            new Goal(1, 27),
         };
 
         obstacles = new Obstacle[] {
-            new Hole(17, 1),
+            new Hole(8, 6),
+            new Hole(23, 6),
+            new Hole(23, 15),
+            new Hole(23, 22),
+            new Hole(21, 26),
 
-            
         };
         introDialogue = new Dialogue[] {
             new Dialogue(90, Dialogue.Speaker.Rubik, "Welcome To your doom!"),
