@@ -20,53 +20,48 @@ public class Level1 : Map
     // Objects that take up multiple tiles such as black holes and goals/holes are placed based on their top left corner
     //     So the black hole if spawned at 16, 16 will delete ground between [8,16]x and [8,16]z 64 total ground segments
     public Level1() : base() {
-        width = 30;
-        height = 30;
+        width = 20;
+        height = 20;
 
-        cameraSettings = new CameraSettings(new Vector3(0f, 15f, -10f), new Vector3(60f, 0f, 0f), 2.5f, 2.5f);
+        cameraSettings = new CameraSettings(new Vector3(0f, 10f, -6.75f), new Vector3(60f, 0f, 0f), 2.5f, 2.5f);
 
-        player = new Player(1, 1);
+        player = new Player(10, 10);
         walls = new Wall[] {
             // new Wall(x1, z1, x2, z2)
-            new Wall(0, 0, 32, 0),  // Bottom Wall
-            new Wall(0, 0, 0, 32),  // Left Wall
-            new Wall(31, 0, 32, 32),// Right Wall
-            new Wall(0, 31, 32, 32),// Top Wall
-
-            new Wall(3, 0, 3, 10), // Internal Wall
-            
-            new Wall(6, 0, 18, 10), // Filler Wall
+            new Wall(0, 0, 22, 0),  // Bottom Wall
+            new Wall(0, 0, 0, 22),  // Left Wall
+            new Wall(21, 0, 22, 22),// Right Wall
+            new Wall(0, 21, 22, 22),// Top Wall
         };
         goals = new Goal[] {
-            new Goal(20, 14)
+            new Goal(0, 0)
         };
         obstacles = new Obstacle[] {
-            new Hole(14, 14),
-            new Hole(22, 26),
-            new Hole(24, 26),
-            new Hole(26, 26),
-            new Hole(28, 26),
-            new BlackHole(0, 22),
+            new Hole(0, 18),
+            new Hole(18, 18),
+            new Hole(18, 0),
+            //new Hole(19, 26),
+            //new Hole(19, 26),
+            //new BlackHole(0, 22),
         };
         introDialogue = new Dialogue[] {
-            new Dialogue(5, Dialogue.Speaker.King, "Welcome To Level 1!"),
-            new Dialogue(10, Dialogue.Speaker.Rubik, "Yes Welcome! We Have Everything A Sphere Like Yourself Would Need To Go Insane. Just Try To Escape."),
-            new Dialogue(9, Dialogue.Speaker.King, "Hold On Rubik, This Is Only A Demo. The Real Game Will Be Completed Soon."),
-            new Dialogue(5, Dialogue.Speaker.Rubik, "Alright..."),
-            new Dialogue(5, Dialogue.Speaker.Rubik, "I Will Keep Building My Puzzles..."),
+            new Dialogue(10, Dialogue.Speaker.Rubik, "HA-HA-HA, Look my lord! He is but a little mouse in my impossible maze!"),
+            new Dialogue(5, Dialogue.Speaker.King, "Excellent work Rubi K. By the way why are there holes in the prison?"),
+            new Dialogue(10, Dialogue.Speaker.Rubik, "Yes, about those. I thought it would be dull if he was stuck in this little room forever so I gave him something to do."),
+            new Dialogue(9, Dialogue.Speaker.Rubik, "He will be rolling around aimlessly falling through holes until he goes insane!"),
+            new Dialogue(5, Dialogue.Speaker.King, "I see..."),
+            new Dialogue(5, Dialogue.Speaker.King, "Don't make me regret assigning you to this task."),
         };
         outroDialogue = new Dialogue[] {
-            new Dialogue(5, Dialogue.Speaker.King, "There Is No Way! How Could YOU Beat US!"),
-            new Dialogue(7, Dialogue.Speaker.King, "RUBI K. WE NEED TO TALK!"),
-            new Dialogue(3, Dialogue.Speaker.Rubik, "Y-Yes?"),
-            new Dialogue(7, Dialogue.Speaker.King, "THE GAME HASNT EVEN BEEN COMPLETED YET THEY ALREADY ESCAPED!!!"),
-            new Dialogue(1, Dialogue.Speaker.Rubik, ". . ."),
+            new Dialogue(5, Dialogue.Speaker.Rubik, "Wait... WHAT!!!"),
+            new Dialogue(7, Dialogue.Speaker.Rubik, "How did you figure this puzzle out so quickly?"),
+            new Dialogue(7, Dialogue.Speaker.Rubik, "I better make this next one harder."),
+            new Dialogue(1, Dialogue.Speaker.King, ". . ."),
         };
         failDialogue = new Dialogue[] {
-            new Dialogue(5, Dialogue.Speaker.King, "Try as much as you like. You will never win!"),
-            new Dialogue(5, Dialogue.Speaker.Rubik, "Yes! You Will Never Outsmart Me!!"),
-            new Dialogue(5, Dialogue.Speaker.King, "*Aghem*"),
-            new Dialogue(5, Dialogue.Speaker.Rubik, "U-Us! You Will Never Outsmart US!")
+            new Dialogue(5, Dialogue.Speaker.Rubik, "SCRAMBLE Me Sideways! You really are stupid!"),
+            new Dialogue(5, Dialogue.Speaker.King, "You know what they say Rubi K. You are only as sharp as your pointiest vertex."),
+            new Dialogue(5, Dialogue.Speaker.Rubik, "Your wisdom knows no bounds my lord."),
         };
     
         buildMap();

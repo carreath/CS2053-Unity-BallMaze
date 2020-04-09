@@ -11,6 +11,7 @@ public abstract class Map : Level
     public int height {get; set; }
     public Vector3 mapScale {get; set; }
 
+    public ControlsDisplay controls {get; set; }
     public Player player {get; set; }
     public Wall[] walls {get; set; }
     public Goal[] goals {get; set; }
@@ -19,6 +20,7 @@ public abstract class Map : Level
     public Dialogue[] outroDialogue {get; set; }
     public Dialogue[] failDialogue {get; set; }
     public bool[,] ground {get; set; }
+    
     
     public float xOffset {get; set;}
     public float zOffset {get; set;}

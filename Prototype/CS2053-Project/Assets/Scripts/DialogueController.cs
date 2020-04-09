@@ -89,7 +89,7 @@ public class DialogueController : MonoBehaviour
                     king.SetActive(true);
                     break;
                 case Dialogue.Speaker.Rubik:
-                    nameText.text = "Rubik";
+                    nameText.text = "Rubi K.";
                     rubik.SetActive(true);
                     break;
                 case Dialogue.Speaker.Player:

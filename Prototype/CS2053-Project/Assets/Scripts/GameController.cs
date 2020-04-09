@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
     public int level = 0;
     
     public Material debugMaterial;
+    public int rubikVariant = 0;
 
     private BallController ball;
     private DialogueController dialogueScript;
@@ -37,7 +38,7 @@ public class GameController : MonoBehaviour
         _dialogueController = Instantiate(dialogueController, new Vector3(0,0,0), Quaternion.identity);
         dialogueScript = _dialogueController.GetComponent<DialogueController>();
         dialogueScript.dialogue = new Dialogue[][] {level.introDialogue, level.outroDialogue, level.failDialogue};
-        dialogueScript.rubikVariant = 1;
+        dialogueScript.rubikVariant = rubikVariant;
 
         _transitionController = Instantiate(transitionController, new Vector3(0,0,0), Quaternion.identity);
         transitionScript = _transitionController.GetComponent<TransitionController>();
@@ -129,7 +130,7 @@ public class GameController : MonoBehaviour
     private Level GetLevel() {
         switch (level) {
             case 0:
-                return new Level1();
+                return new Level0();
             case 1:
                 return new Level1();
             case 2:
