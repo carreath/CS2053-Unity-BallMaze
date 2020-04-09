@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour
 
         _transitionController = Instantiate(transitionController, new Vector3(0,0,0), Quaternion.identity);
         transitionScript = _transitionController.GetComponent<TransitionController>();
-        transitionScript.ball = ball;
+        transitionScript.setBall(ball);
         transitionScript.dialogue = dialogueScript;
         transitionScript.cameraSettings = level.cameraSettings;
 
@@ -138,8 +138,10 @@ public class GameController : MonoBehaviour
             case 3:
                 return new Level1();
             case 4:
-                return new Level1();
+                return new Level4();
             case 5:
+                return new Level5();
+            case 6:
                 return new BossLevel();
         }
         return new Level1();

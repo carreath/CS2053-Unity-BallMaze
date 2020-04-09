@@ -28,7 +28,6 @@ public class Level1 : Map
             new Wall(18, 5, 19, 20),
             new Wall(18, 9, 17, 15),
             
-            
         };
 
 

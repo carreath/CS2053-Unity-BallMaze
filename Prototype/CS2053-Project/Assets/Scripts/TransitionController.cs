@@ -26,12 +26,23 @@ public class TransitionController : MonoBehaviour
 
     public CameraSettings cameraSettings;
 
+    private AudioSource windSource;
+    private AudioSource rollSource;
+    private AudioSource hitSource;
+
     private float timer;
     private float ballX;
     private float ballZ;
     private bool lost;
     private bool checkError;
     private Vector3 previousBallPosition;
+    private bool windPlaying;
+    private bool rollPlaying;
+    private bool hitGround;
+
+    public float maxSpeed = 3.7f;
+    public AnimationCurve volumeCurve;
+    public AnimationCurve pitchCurve;
 
     // Start is called before the first frame update
     void Start()
@@ -78,6 +89,11 @@ public class TransitionController : MonoBehaviour
                     }
                     break;
                 case TransitionType.Intro:
+                    if (!hitGround && ballPosition.y < 3f) {
+                        windSource.Stop();
+                        hitSource.Play();
+                        hitGround = true;
+                    }
                     if ((camera.transform.position - cameraSettings.position).magnitude < 0.1f) {
                         isTransitioning = false;
                     } else if (camera.transform.position.y < cameraSettings.position.y + 5f) {
@@ -104,6 +120,7 @@ public class TransitionController : MonoBehaviour
 
                     break;
                 case TransitionType.Outro:
+                    rollSource.Stop();
                     if (ballPosition.y < -15f) {
                         ballPosition.y = -15f;
                     }
@@ -159,8 +176,29 @@ public class TransitionController : MonoBehaviour
                     }
                     break;
             }
-        } 
+        } else {
+            if (ball.GetComponent<Rigidbody>().velocity.magnitude > 0.5f) {
+                var speed = ball.GetComponent<Rigidbody>().velocity.magnitude;
+                var scaledVelocity = Remap(Mathf.Clamp(speed, 0, maxSpeed), 0, maxSpeed, 0, 1);
+                rollSource.volume = volumeCurve.Evaluate(scaledVelocity);
+                rollSource.pitch = pitchCurve.Evaluate(scaledVelocity);
+                rollSource.pitch = Mathf.Max(rollSource.pitch, 0.5f);
+                rollSource.pitch = Mathf.Min(rollSource.pitch, 1.5f);
+                if (!rollPlaying) {
+                    rollPlaying = true;
+                    rollSource.Play();
+                }
+            } else if (rollPlaying) {
+                rollPlaying = false;
+                rollSource.Stop();
+            }
+        }
         previousBallPosition = ball.transform.position;
+    }
+
+    public float Remap(float value, float from1, float to1, float from2, float to2)
+    {
+        return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
     }
 
     public bool isCameraDefault() {
@@ -168,11 +206,30 @@ public class TransitionController : MonoBehaviour
     }
 
     private void freezeBall() {
+        if (!windPlaying) {
+            windSource.Play();
+            windPlaying = true;
+            //StartCoroutine("playWind");
+        }
         Vector3 ballPosition = camera.transform.position;
         ballPosition.y -= 3;
         ball.transform.position = ballPosition;
         ball.GetComponent<Rigidbody>().velocity = Vector3.zero;
         ball.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+    }
+
+    IEnumerator playWind() {
+        windPlaying = true;
+
+        windSource.Play();
+        yield return new WaitForSeconds(windSource.clip.length);
+    }
+
+    public void setBall(BallController ball) {
+        this.ball = ball;
+        windSource = ball.GetComponents<AudioSource>()[0];
+        rollSource = ball.GetComponents<AudioSource>()[1];
+        hitSource = ball.GetComponents<AudioSource>()[2];
     }
 
     public void Intro() {
