@@ -107,13 +107,20 @@ public class DialogueController : MonoBehaviour
 
     IEnumerator TypeSentence(string sentence, int speed) {
         dialogueText.text = "";
+        int count = 0;
         foreach (char letter in sentence.ToCharArray()) {
             // Play Voice Sound Here
+
+            if (king.active && count++ % 6 == 0) {
+                king.GetComponent<AudioSource>().Play(0);
+            }
+            if (rubik.active && count++ % 6 == 0) {
+                rubik.GetComponent<AudioSource>().Play(0);
+            }
+
             dialogueText.text += letter;
-            if (speed < 10) {
-                for (int i=0; i<100; i+=10*speed) {
-                    yield return null;
-                }
+            for (int i=0; i<100; i+=10*speed) {
+                yield return null;
             }
         }
     }

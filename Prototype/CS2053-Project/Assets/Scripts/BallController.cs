@@ -12,10 +12,14 @@ public class BallController : MonoBehaviour
 
     public static int sanity = 3;
 
+    public AudioSource bounceSound;
+    public AudioSource hitSound;
+
     // Start is called before the first frame update
     void Start()
     { 
-
+        hitSound = GetComponents<AudioSource>()[2];
+        bounceSound = GetComponents<AudioSource>()[3];
     }
 
     // Update is called once per frame
@@ -32,6 +36,16 @@ public class BallController : MonoBehaviour
             gameController.Win();      
         } else if (other.gameObject.tag == "Hole") {
             gameController.Lose();      
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag =="Wall" && GetComponent<Rigidbody>().velocity.magnitude >= 0.5f) {
+            hitSound.Play();
+        }
+        if (collision.gameObject.tag =="BouncyWall" && GetComponent<Rigidbody>().velocity.magnitude >= 0.5f) {
+            bounceSound.Play();
         }
     }
 }
