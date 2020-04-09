@@ -34,15 +34,13 @@ public class Level1 : Map
 
         wallsBouncy = new WallBouncy[] {
             new WallBouncy(5, 5, 18, 6),
-        };
+        }; 
 
         goals = new Goal[] {
             new Goal(15, 15)
         };
 
         obstacles = new Obstacle[] {
-            //place 2 holes near beginning
-            //place 2  holes at end for either side depending on which side you take
             new Hole(17, 1),
 
             

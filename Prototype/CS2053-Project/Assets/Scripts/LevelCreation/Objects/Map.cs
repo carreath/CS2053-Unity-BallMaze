@@ -44,12 +44,6 @@ public abstract class Map : Level
         }
 
         
-        // try {
-        //     int len = wallsBouncy.Length;
-        //     Debug.Log(len);
-        // } catch{
-        //     Debug.Log("Error getting length: ");
-        // }
         foreach (WallBouncy wallbouncy in wallsBouncy) {
             wallbouncy.transform.xPos += xOffset;
             wallbouncy.transform.zPos += zOffset;
