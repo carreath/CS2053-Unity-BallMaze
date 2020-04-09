@@ -11,6 +11,7 @@ public interface Level
     ControlsDisplay controls {get; set; }
     Player player {get; set; }
     Wall[] walls {get; set; }
+    WallBouncy[] wallsBouncy {get; set; }
     Goal[] goals {get; set; }
     Obstacle[] obstacles {get; set; }
     Dialogue[] introDialogue {get; set; }

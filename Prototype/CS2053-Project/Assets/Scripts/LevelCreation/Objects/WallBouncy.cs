@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallBouncyController : MapObject
-{
+public class WallBouncy : MapObject {
      
     public Position transform;
-    public void setupWall(int xGrid1, int zGrid1, int xGrid2, int zGrid2) {
+    public WallBouncy(int xGrid1, int zGrid1, int xGrid2, int zGrid2) {
         float xScale = (xGrid2 - xGrid1) / 2f;
         if (xGrid1 == xGrid2) {
             xScale = 0.5f;
@@ -23,4 +22,5 @@ public class WallBouncyController : MapObject
         this.transform.xPos = tempXPos;
         this.transform.zPos = tempZPos;
     }
+    
 }

@@ -14,6 +14,7 @@ public abstract class Map : Level
     public ControlsDisplay controls {get; set; }
     public Player player {get; set; }
     public Wall[] walls {get; set; }
+    public WallBouncy[] wallsBouncy {get; set; }
     public Goal[] goals {get; set; }
     public Obstacle[] obstacles {get; set; }
     public Dialogue[] introDialogue {get; set; }
@@ -28,6 +29,8 @@ public abstract class Map : Level
     public CameraSettings cameraSettings { get; set; }
 
     public void buildMap() {
+        
+
         // IF YOUR OBJECT IS NOT A SUB-SET OF ANY OTHER TYPE ADD OFFSET RULES HERE
         xOffset = (float) -width/4f + 0.5f;
         zOffset = (float) -height/4f + 0.5f;
@@ -39,6 +42,19 @@ public abstract class Map : Level
             wall.transform.xPos += xOffset;
             wall.transform.zPos += zOffset;
         }
+
+        
+        // try {
+        //     int len = wallsBouncy.Length;
+        //     Debug.Log(len);
+        // } catch{
+        //     Debug.Log("Error getting length: ");
+        // }
+        foreach (WallBouncy wallbouncy in wallsBouncy) {
+            wallbouncy.transform.xPos += xOffset;
+            wallbouncy.transform.zPos += zOffset;
+        }
+
         foreach (Goal goal in goals) {
             goal.transform.xPos += xOffset;
             goal.transform.zPos += zOffset;
@@ -64,6 +80,7 @@ public abstract class Map : Level
                 }
             }
         }
+
         foreach (Obstacle obstacle in obstacles) {
             switch (obstacle.type) {
                 case Obstacle.ObstacleType.Hole:

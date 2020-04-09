@@ -20,6 +20,7 @@ public class LevelLoader
     private GameObject BlackHole;
     private GameObject Hole;
     private GameObject Wall;
+    private GameObject WallBouncyObj;
     private GameObject Ground;
     private GameObject ControlsDisplayObj;
 
@@ -49,6 +50,9 @@ public class LevelLoader
                     break;
                 case "Wall":
                     Wall = prefab;
+                    break;
+                case "WallBouncy":
+                    WallBouncyObj = prefab;
                     break;
                 case "Ground Segment":
                     Ground = prefab;
@@ -95,6 +99,15 @@ public class LevelLoader
                 Debug.Log("Error Instantiating Wall: " + e);
             }
         }
+
+        foreach (WallBouncy wallBouncy in level.wallsBouncy) {
+            try {
+                createWallBouncy(wallBouncy);
+            } catch (Exception e) {
+                Debug.Log("Error Instantiating WallBouncy: " + e);
+            }
+        }
+
         foreach (Goal goal in level.goals) {
             try {
                 createGoal(goal);                
@@ -141,6 +154,12 @@ public class LevelLoader
         GameObject w = Instantiate(Wall, wall.transform.position, Quaternion.identity);
         w.transform.SetParent(gc.gameObject.transform);
         w.transform.localScale = wall.transform.scale;
+    }
+
+    private void createWallBouncy(WallBouncy wallBouncy){
+        GameObject wb = Instantiate(WallBouncyObj, wallBouncy.transform.position, Quaternion.identity);
+        wb.transform.SetParent(gc.gameObject.transform);
+        wb.transform.localScale = wallBouncy.transform.scale;
     }
 
     private void createGoal(Goal goal) {
