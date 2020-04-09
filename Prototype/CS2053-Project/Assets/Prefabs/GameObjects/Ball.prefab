@@ -129,6 +129,8 @@ MonoBehaviour:
   gameController: {fileID: 0}
   ballX: 0
   ballZ: 0
+  bounceSound: {fileID: 0}
+  hitSound: {fileID: 0}
 --- !u!82 &8914321119559347157
 AudioSource:
   m_ObjectHideFlags: 0

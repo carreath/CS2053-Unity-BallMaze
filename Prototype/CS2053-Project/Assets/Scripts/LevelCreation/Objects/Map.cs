@@ -20,6 +20,7 @@ public abstract class Map : Level
     public Dialogue[] introDialogue {get; set; }
     public Dialogue[] outroDialogue {get; set; }
     public Dialogue[] failDialogue {get; set; }
+    public KingCube king {get; set; }
     public bool[,] ground {get; set; }
     
     
@@ -29,11 +30,18 @@ public abstract class Map : Level
     public CameraSettings cameraSettings { get; set; }
 
     public void buildMap() {
-        
-
+        if (wallsBouncy == null) {
+            wallsBouncy = new WallBouncy[0];
+        }
+    
         // IF YOUR OBJECT IS NOT A SUB-SET OF ANY OTHER TYPE ADD OFFSET RULES HERE
         xOffset = (float) -width/4f + 0.5f;
         zOffset = (float) -height/4f + 0.5f;
+
+        if (king != null) {
+            king.transform.xPos += xOffset;
+            king.transform.zPos += zOffset;
+        }
 
         player.transform.xPos += xOffset;
         player.transform.zPos += zOffset;

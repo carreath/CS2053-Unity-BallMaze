@@ -8,6 +8,8 @@ TagManager:
   - Hole
   - Wall
   - Character
+  - King
+  - BouncyWall
   layers:
   - Default
   - TransparentFX

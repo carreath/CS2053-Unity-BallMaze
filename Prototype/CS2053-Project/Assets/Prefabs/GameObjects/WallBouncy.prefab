@@ -10,7 +10,12 @@ PrefabInstance:
     - target: {fileID: 8759028423042528154, guid: d3eaf45e4825d39a98d6dd586c517b85,
         type: 3}
       propertyPath: m_Name
-      value: Wall
+      value: WallBouncy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8759028423042528154, guid: d3eaf45e4825d39a98d6dd586c517b85,
+        type: 3}
+      propertyPath: m_TagString
+      value: BouncyWall
       objectReference: {fileID: 0}
     - target: {fileID: 8759028423042528155, guid: d3eaf45e4825d39a98d6dd586c517b85,
         type: 3}

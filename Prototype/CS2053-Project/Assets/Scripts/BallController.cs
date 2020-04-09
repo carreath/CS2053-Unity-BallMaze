@@ -41,10 +41,17 @@ public class BallController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag =="King") {
+            hitSound.Play();
+            collision.gameObject.SendMessage("DIE");
+        }
         if (collision.gameObject.tag =="EmitterBall") {
             hitSound.Play();
         }
         if (collision.gameObject.tag =="Wall" && GetComponent<Rigidbody>().velocity.magnitude >= 0.5f) {
+            hitSound.Play();
+        }
+        if (collision.gameObject.tag =="Emitter" && GetComponent<Rigidbody>().velocity.magnitude >= 0.5f) {
             hitSound.Play();
         }
         if (collision.gameObject.tag =="BouncyWall" && GetComponent<Rigidbody>().velocity.magnitude >= 0.5f) {

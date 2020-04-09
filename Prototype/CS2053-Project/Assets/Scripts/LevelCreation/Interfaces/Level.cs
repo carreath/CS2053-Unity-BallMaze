@@ -17,6 +17,7 @@ public interface Level
     Dialogue[] introDialogue {get; set; }
     Dialogue[] outroDialogue {get; set; }
     Dialogue[] failDialogue {get; set; }
+    KingCube king {get; set; }
     bool[,] ground {get; set; }
 
     float xOffset {get; set;}

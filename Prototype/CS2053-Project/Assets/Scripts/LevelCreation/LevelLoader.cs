@@ -24,6 +24,7 @@ public class LevelLoader
     private GameObject Emitter;
     private GameObject Ground;
     private GameObject ControlsDisplayObj;
+    private GameObject CubeKingPrefab;
 
     private GameObject Instantiate(GameObject obj, Vector3 position, Quaternion rot) {
         return gc.Instantiate_helper(obj, position, rot);
@@ -64,6 +65,9 @@ public class LevelLoader
                 case "ControlsDisplay":
                     ControlsDisplayObj = prefab;
                     break;
+                case "CubeKingPrefab":
+                    CubeKingPrefab = prefab;
+                    break;
             }
         }
 
@@ -74,6 +78,12 @@ public class LevelLoader
     private void createLevel() {
         try {
             createPlayer();
+        } catch (Exception e) {
+            Debug.Log("Error Instantiating Player: " + e);
+        }
+
+        try {
+            createCubeKing();
         } catch (Exception e) {
             Debug.Log("Error Instantiating Player: " + e);
         }
@@ -137,6 +147,11 @@ public class LevelLoader
         ballObj.transform.SetParent(gc.gameObject.transform);
     }
 
+    private void createCubeKing() {
+        GameObject ballObj = Instantiate(CubeKingPrefab, level.king.transform.position, Quaternion.identity);
+        ballObj.transform.SetParent(gc.gameObject.transform);
+    }
+
     private void createControls() {
         GameObject controlObj = Instantiate(ControlsDisplayObj, Vector3.zero, Quaternion.identity);
         controlObj.transform.SetParent(gc.gameObject.transform);
@@ -152,7 +167,9 @@ public class LevelLoader
                 Instantiate(BlackHole, obstacle.transform.position, Quaternion.Euler(-90, 0, 0)).transform.SetParent(gc.gameObject.transform);
                 break;
             case Obstacle.ObstacleType.Emitter:
-                Instantiate(Emitter, obstacle.transform.position, obstacle.rotation).transform.SetParent(gc.gameObject.transform);
+                Vector3 pos = obstacle.transform.position;
+                pos.y -= 0.233f;
+                Instantiate(Emitter, pos, obstacle.rotation).transform.SetParent(gc.gameObject.transform);
                 break;
         }
     }

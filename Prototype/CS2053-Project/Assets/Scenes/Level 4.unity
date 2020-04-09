@@ -120,7 +120,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &849501586
+--- !u!1001 &382730701
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -189,7 +189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79a6b09f5337f474691cfc57a41d608f, type: 3}
---- !u!1001 &1062022960
+--- !u!1001 &950431354
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -260,6 +260,11 @@ PrefabInstance:
         type: 3}
       propertyPath: level
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1693169244136468181, guid: 2924cf48b80a99c8084e058e834804b0,
+        type: 3}
+      propertyPath: rubikVariant
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2924cf48b80a99c8084e058e834804b0, type: 3}

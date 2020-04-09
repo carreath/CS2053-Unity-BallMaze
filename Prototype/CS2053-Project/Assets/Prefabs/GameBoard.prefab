@@ -27,8 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 7589298658083879406}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -61,6 +60,8 @@ MonoBehaviour:
   - {fileID: 8759028423042528154, guid: d3eaf45e4825d39a98d6dd586c517b85, type: 3}
   - {fileID: 2495145583601703591, guid: d6e5add1103e4b445a361e673f6ead25, type: 3}
   - {fileID: 3134644445653698770, guid: 6bf647ecb9cbf495a8d00d3e6718b39b, type: 3}
+  - {fileID: 1863840442262712635, guid: 18b334654975453489facce471c919a2, type: 3}
+  - {fileID: 6072436868461140191, guid: 7404561fce7117d4e97f4761f8c26142, type: 3}
   level: 0
   debugMaterial: {fileID: 2100000, guid: 178d83892570363899b06191d49ed0bf, type: 2}
   rubikVariant: 0

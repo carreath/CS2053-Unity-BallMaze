@@ -18,4 +18,14 @@ public class EmitterBall : MonoBehaviour
 
         Object.Destroy(gameObject, 10.0f);
     }
+    
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag =="Wall") {
+            Object.Destroy(gameObject);
+        }
+        if (collision.gameObject.tag =="BouncyWall") {
+            Object.Destroy(gameObject);
+        }
+    }
 }
