@@ -25,11 +25,16 @@ public class GameController : MonoBehaviour
     private GameObject _transitionController;
 
     private bool loading;
- 
+    
+    public GameObject zergling;
     // Start is called before the first frame update
     void Start()
     {
+        if(this.level == 2){
+            Instantiate(zergling, new Vector3(3,2,6), Quaternion.AngleAxis(90f, Vector3.up)).transform.SetParent(transform);
+        }
         Level level = GetLevel();
+        
         LevelLoader loader = new LevelLoader(this, level, levelPrefabs);
 
         ball = this.GetComponentInChildren<BallController>();
@@ -134,7 +139,7 @@ public class GameController : MonoBehaviour
             case 1:
                 return new Level1();
             case 2:
-                return new Level1();
+                return new Level2();
             case 3:
                 return new Level1();
             case 4:
