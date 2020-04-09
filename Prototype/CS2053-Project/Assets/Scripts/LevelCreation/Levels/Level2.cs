@@ -136,14 +136,14 @@ public class Level2 : Map
             new Dialogue(5, Dialogue.Speaker.Rubik, "AGH!!! You won't be able to get aROUND us next time!"),
         };
         failDialogue = new Dialogue[] {
-            new Dialogue(7, Dialogue.Speaker.Rubik, "Humpty Dumpty bumped into my walls & Humpty Dumpty had a great fall"),
-            new Dialogue(7, Dialogue.Speaker.Rubik, "All the king's horses and all the king's men, couldn't put Humpty together again"),
-            new Dialogue(7, Dialogue.Speaker.Rubik, "You my good broken Spherical General are now like Humpty Dumpty! HAHAHAHA"),
-            new Dialogue(5, Dialogue.Speaker.King, "Well done Rubik! Just like how I like my eggs."),
+            new Dialogue(70, Dialogue.Speaker.Rubik, "Humpty Dumpty bumped into my walls & Humpty Dumpty had a great fall"),
+            new Dialogue(70, Dialogue.Speaker.Rubik, "All the king's horses and all the king's men, couldn't put Humpty together again"),
+            new Dialogue(70, Dialogue.Speaker.Rubik, "You my good broken Spherical General are now like Humpty Dumpty! HAHAHAHA"),
+            new Dialogue(70, Dialogue.Speaker.King, "Well done Rubik! Just like how I like my eggs."),
         };
     
         buildMap();
-        // Instantiate(zergling, new Vector3(3,2,8), Quaternion.AngleAxis(90f, Vector3.up));
+        
         
     }
 }

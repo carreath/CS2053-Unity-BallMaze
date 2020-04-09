@@ -54,7 +54,7 @@ public class Level1 : Map
 
         };
         introDialogue = new Dialogue[] {
-            new Dialogue(90, Dialogue.Speaker.Rubik, "Welcome To your doom!"),
+            new Dialogue(70, Dialogue.Speaker.Rubik, "Welcome To your doom!"),
             new Dialogue(50, Dialogue.Speaker.Rubik, "We're going to have some fun you and I!"),
             new Dialogue(50, Dialogue.Speaker.Rubik, "Because now the walls turn against you! You thought you could find solace against these edges, but now they will push you to your sanity’s edge! HAHAHA!"),
 
