@@ -44,12 +44,12 @@ public class Level0 : Map
             new Hole(18, 0),
         };
         introDialogue = new Dialogue[] {
-            new Dialogue(10, Dialogue.Speaker.Rubik, "HA-HA-HA, Look my lord! He is but a little mouse in my impossible maze!"),
-            new Dialogue(5, Dialogue.Speaker.King, "Excellent work Rubi K. By the way why are there holes in the prison?"),
-            new Dialogue(10, Dialogue.Speaker.Rubik, "Yes, about those. I thought it would be dull if he was stuck in this little room forever so I gave him something to do."),
-            new Dialogue(9, Dialogue.Speaker.Rubik, "He will be rolling around aimlessly falling through holes until he goes insane!"),
+            new Dialogue(90, Dialogue.Speaker.Rubik, "HA-HA-HA, Look my lord! He is but a little mouse in my impossible maze!"),
+            new Dialogue(50, Dialogue.Speaker.King, "Excellent work Rubi K. By the way why are there holes in the prison?"),
+            new Dialogue(90, Dialogue.Speaker.Rubik, "Yes, about those. I thought it would be dull if he was stuck in this little room forever so I gave him something to do."),
+            new Dialogue(90, Dialogue.Speaker.Rubik, "He will be rolling around aimlessly falling through holes until he goes insane!"),
             new Dialogue(5, Dialogue.Speaker.King, "I see..."),
-            new Dialogue(5, Dialogue.Speaker.King, "Don't make me regret assigning you to this task."),
+            new Dialogue(50, Dialogue.Speaker.King, "Don't make me regret assigning you to this task."),
         };
         outroDialogue = new Dialogue[] {
             new Dialogue(5, Dialogue.Speaker.Rubik, "Wait... WHAT!!!"),
