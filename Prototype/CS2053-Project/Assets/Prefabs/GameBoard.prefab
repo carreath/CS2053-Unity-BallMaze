@@ -58,4 +58,6 @@ MonoBehaviour:
   - {fileID: 3384922457315988674, guid: 28fc286ccf21dfda39ad203a34895650, type: 3}
   - {fileID: 385871773585665604, guid: 7549b76f22eed2195a379a41af08b606, type: 3}
   - {fileID: 8759028423042528154, guid: d3eaf45e4825d39a98d6dd586c517b85, type: 3}
+  - {fileID: 1863840442262712635, guid: 18b334654975453489facce471c919a2, type: 3}
+  level: 0
   debugMaterial: {fileID: 2100000, guid: 178d83892570363899b06191d49ed0bf, type: 2}

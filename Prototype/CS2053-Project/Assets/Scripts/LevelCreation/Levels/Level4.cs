@@ -26,7 +26,9 @@ public class Level4 : Map
             new Goal(16, 2)
         };
         obstacles = new Obstacle[] {
-            //Emiiter will go at (2,12)
+            //Emitter will go at (2,12)
+            new Emitter(2,8, 180.0f),
+
             new Hole(3, 5),
             new Hole(8, 12),
             new Hole(15, 8),
@@ -38,7 +40,7 @@ public class Level4 : Map
             new Dialogue(5, Dialogue.Speaker.King, "Welcome to level 4!"),
             new Dialogue(7, Dialogue.Speaker.Rubik, "So far so good, but meet my little friends."),
             new Dialogue(7, Dialogue.Speaker.King, "Hahahahah. Let us introduce our interrogators! Go on, try dodging them."),
-            new Dialogue(7, Dialogue.Speaker.Rubik, "Try and get arround this black hole We are after you 👿")
+            new Dialogue(7, Dialogue.Speaker.Rubik, "Try and get arround this black hole We are after you")
         };
         outroDialogue = new Dialogue[] {
             new Dialogue(4, Dialogue.Speaker.King, "You got past our integrators!"),

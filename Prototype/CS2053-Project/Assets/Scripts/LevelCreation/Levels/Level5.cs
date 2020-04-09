@@ -38,12 +38,12 @@ public class Level5 : Map
             new Goal(25, 3)
         };
         obstacles = new Obstacle[] {
-            //Emiiter at 1, 12
-            new Hole(0, 12),
-            //Emiiter at 9, 5
-            new Hole(9, 5),
-            //Emiiter at 9, 1
-            new Hole(9, 1),
+            //Emitter at 1, 12
+            new Emitter(0, 12, 0.0f),
+            //Emitter at 9, 5
+            new Emitter(9, 5, 90.0f),
+            //Emitter at 9, 1
+            new Emitter(9, 1, 90.0f),
 
             new Hole(11, 11),
             new Hole(14, 14),
