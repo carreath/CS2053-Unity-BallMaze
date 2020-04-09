@@ -20,6 +20,7 @@ public class LevelLoader
     private GameObject BlackHole;
     private GameObject Hole;
     private GameObject Wall;
+    private GameObject Emitter;
     private GameObject Ground;
     private GameObject ControlsDisplayObj;
 
@@ -49,6 +50,9 @@ public class LevelLoader
                     break;
                 case "Wall":
                     Wall = prefab;
+                    break;
+                case "Emitter":
+                    Emitter = prefab;
                     break;
                 case "Ground Segment":
                     Ground = prefab;
@@ -133,6 +137,9 @@ public class LevelLoader
                 break;
             case Obstacle.ObstacleType.BlackHole:
                 Instantiate(BlackHole, obstacle.transform.position, Quaternion.Euler(-90, 0, 0)).transform.SetParent(gc.gameObject.transform);
+                break;
+            case Obstacle.ObstacleType.Emitter:
+                Instantiate(Emitter, obstacle.transform.position, obstacle.rotation).transform.SetParent(gc.gameObject.transform);
                 break;
         }
     }

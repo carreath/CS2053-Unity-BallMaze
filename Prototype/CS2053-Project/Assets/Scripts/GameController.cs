@@ -138,8 +138,10 @@ public class GameController : MonoBehaviour
             case 3:
                 return new Level1();
             case 4:
-                return new Level1();
+                return new Level4();
             case 5:
+                return new Level5();
+            case 6:
                 return new BossLevel();
         }
         return new Level1();
