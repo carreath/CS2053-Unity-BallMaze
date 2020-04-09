@@ -20,11 +20,8 @@ public class LevelLoader
     private GameObject BlackHole;
     private GameObject Hole;
     private GameObject Wall;
-<<<<<<< HEAD
     private GameObject WallBouncyObj;
-=======
     private GameObject Emitter;
->>>>>>> 145045816ea6fa363c2f04574f25eea717acc588
     private GameObject Ground;
     private GameObject ControlsDisplayObj;
 
@@ -57,6 +54,7 @@ public class LevelLoader
                     break;
                 case "WallBouncy":
                     WallBouncyObj = prefab;
+                    break;
                 case "Emitter":
                     Emitter = prefab;
                     break;
